@@ -1,0 +1,24 @@
+{
+  "name": "backend-graphql",
+  "version": "1.0.0",
+  "description": "Gok backend graphql",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Julian KOUNE",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.25.4",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-jwt": "^6.1.2",
+    "graphql": "^15.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.14"
+  }
+}

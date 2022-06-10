@@ -1,1 +1,1 @@
-# mongo-graphql-js-backend
+# Template Application
