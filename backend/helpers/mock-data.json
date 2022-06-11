@@ -1,0 +1,44 @@
+{
+  "accounts": [
+    {
+      "username": "admin",
+      "firstName": "Johnny",
+      "lastName": "Depp",
+      "email": "johnnydepp@gmail.com",
+      "phone": "0770268635",
+      "gender": "homme",
+      "password": "admin",
+      "isAdmin": true
+    },
+    {
+      "username": "user1",
+      "firstName": "Robert",
+      "lastName": "Downey",
+      "email": "rdowney@gmail.com",
+      "phone": "0102030341",
+      "gender": "homme",
+      "password": "user1",
+      "isAdmin": false
+    },
+    {
+      "username": "user2",
+      "firstName": "Angelina",
+      "lastName": "Jolie",
+      "email": "ajolie@gmail.com",
+      "phone": "0770268635",
+      "gender": "femme",
+      "password": "user2",
+      "isAdmin": false
+    },
+    {
+      "username": "user3",
+      "firstName": "Emma",
+      "lastName": "Watson",
+      "email": "ewatson@gmail.com",
+      "phone": "0770268635",
+      "gender": "femme",
+      "password": "user3",
+      "isAdmin": false
+    }
+  ]
+}
