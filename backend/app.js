@@ -10,10 +10,9 @@ const context = require("./context");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
 mongoose
   .connect(
-    `mongodb+srv://${process.env.ATLAS_USERNAME}:${process.env.ATLAS_PASSWORD}@gokplayground.boxbp3n.mongodb.net/?retryWrites=true&w=majority`,
+    `${process.env.ATLAS_URL}`,
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
   )
   .then(() => console.log("Connection to MongoDB succeeded"))

@@ -3,6 +3,11 @@ const jsonwebtoken = require("jsonwebtoken");
 const jwt = require("jsonwebtoken");
 
 const Account = require("../models/account");
+const {
+  AuthenticationError,
+  ForbiddenError,
+  UserInputError,
+} = require("apollo-server-express");
 
 const resolvers = {
   Query: {
@@ -19,7 +24,7 @@ const resolvers = {
     // Accounts
     async accounts(_, args, { loggedInUser }) {
       if (!loggedInUser) {
-        throw new Error("You're not logged in!");
+        throw new AuthenticationError("You're not logged in!");
       }
 
       return await Account.find();
@@ -27,7 +32,7 @@ const resolvers = {
 
     async account(_, args, { loggedInUser }) {
       if (!loggedInUser) {
-        throw new Error("You're not logged in!");
+        throw new AuthenticationError("You're not logged in!");
       }
 
       return await Account.findOne({ username: args.username });
@@ -48,7 +53,7 @@ const resolvers = {
       const valid = await bcrypt.compare(password, account.password);
 
       if (!valid) {
-        throw new Error("Your password is incorrect!");
+        throw new UserInputError("Your password is incorrect!");
       }
 
       return {
@@ -66,13 +71,13 @@ const resolvers = {
     // Accounts
     async addAccount(_, args, { loggedInUser }) {
       if (!loggedInUser) {
-        throw new Error("You're not logged in!");
+        throw new AuthenticationError("You're not logged in!");
       }
 
       const loggedAccount = await Account.findOne({ username: loggedInUser });
 
       if (!loggedAccount.isAdmin) {
-        throw new Error("You're not admin");
+        throw new ForbiddenError("You're not admin");
       }
 
       const account = await Account.create({
@@ -94,13 +99,13 @@ const resolvers = {
 
     async editAccount(_, args, { loggedInUser }) {
       if (!loggedInUser) {
-        throw new Error("You're not logged in!");
+        throw new AuthenticationError("You're not logged in!");
       }
 
       const loggedAccount = await Account.findOne({ username: loggedInUser });
 
       if (!loggedAccount.isAdmin) {
-        throw new Error("You're not admin");
+        throw new ForbiddenError("You're not admin");
       }
 
       await Account.updateOne(
@@ -115,13 +120,13 @@ const resolvers = {
 
     async deleteAccount(_, args, { loggedInUser }) {
       if (!loggedInUser) {
-        throw new Error("You're not logged in!");
+        throw new AuthenticationError("You're not logged in!");
       }
 
       const loggedAccount = await Account.findOne({ username: loggedInUser });
 
       if (!loggedAccount.isAdmin) {
-        throw new Error("You're not admin");
+        throw new ForbiddenError("You're not admin");
       }
 
       return await Account.findOneAndDelete({

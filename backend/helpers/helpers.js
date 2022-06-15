@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 exports.mocking = async () => {
+  console.log("Mocking data...");
   mongoose.connection.collections["accounts"].drop();
   mockData.accounts.forEach(async (account) => {
     Account.create({

@@ -45,4 +45,7 @@ server.on("listening", () => {
 });
 
 server.listen(port);
-mocking();
+
+if (process.env.MOCKING === "true") {
+  mocking();
+}
